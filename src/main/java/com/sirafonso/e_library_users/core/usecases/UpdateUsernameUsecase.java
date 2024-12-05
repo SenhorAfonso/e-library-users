@@ -1,12 +1,20 @@
 package com.sirafonso.e_library_users.core.usecases;
 
+import com.sirafonso.e_library_users.adapters.out.persistence.UserPersistenceAdapter;
+import com.sirafonso.e_library_users.core.domain.models.UserModelOut;
 import com.sirafonso.e_library_users.core.ports.in.UpdateUsernameInputPort;
 
-public class UpdateUsernameUsecase implements UpdateUsernameInputPort {
+import java.util.UUID;
 
+public class UpdateUsernameUsecase implements UpdateUsernameInputPort {
+    private final UserPersistenceAdapter userPersistenceAdapter;
+
+    public UpdateUsernameUsecase(UserPersistenceAdapter userPersistenceAdapter) {
+        this.userPersistenceAdapter = userPersistenceAdapter;
+    }
 
     @Override
-    public String execute(String userId, String newUsername) {
-        return "Updating users of id: " + userId + "username to " + "username";
+    public UserModelOut execute(UUID userId, String newUsername) {
+        return this.userPersistenceAdapter.updateUserUsername(userId, newUsername);
     }
 }
