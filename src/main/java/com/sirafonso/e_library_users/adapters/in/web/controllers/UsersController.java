@@ -1,7 +1,6 @@
 package com.sirafonso.e_library_users.adapters.in.web.controllers;
 
-import com.sirafonso.e_library_users.adapters.in.web.controllers.dtos.SaveUserRequest;
-import com.sirafonso.e_library_users.core.domain.models.UserModelIn;
+import com.sirafonso.e_library_users.adapters.in.web.controllers.dtos.request.SaveUserRequest;
 import com.sirafonso.e_library_users.core.domain.models.UserModelOut;
 import com.sirafonso.e_library_users.core.ports.in.*;
 import jakarta.validation.Valid;
