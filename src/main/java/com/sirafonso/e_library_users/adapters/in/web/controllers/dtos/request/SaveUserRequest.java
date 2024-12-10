@@ -1,4 +1,4 @@
-package com.sirafonso.e_library_users.adapters.in.web.controllers.dtos;
+package com.sirafonso.e_library_users.adapters.in.web.controllers.dtos.request;
 
 import com.sirafonso.e_library_users.core.domain.models.UserModelIn;
 import jakarta.validation.constraints.Email;

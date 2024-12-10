@@ -2,7 +2,6 @@ package com.sirafonso.e_library_users.core.usecases;
 
 import com.sirafonso.e_library_users.adapters.out.persistence.UserPersistenceAdapter;
 import com.sirafonso.e_library_users.core.ports.in.DeleteUserInputPort;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.UUID;
 
