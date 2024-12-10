@@ -3,6 +3,8 @@ package com.sirafonso.e_library_users.adapters.out.persistence;
 import com.sirafonso.e_library_users.adapters.out.mappers.UserMapper;
 import com.sirafonso.e_library_users.adapters.out.repository.UserEntityRepository;
 import com.sirafonso.e_library_users.adapters.out.repository.entities.UserEntity;
+import com.sirafonso.e_library_users.core.domain.exceptions.ExceptionMessage;
+import com.sirafonso.e_library_users.core.domain.exceptions.database.ResourceNotFoundException;
 import com.sirafonso.e_library_users.core.domain.models.UserModelIn;
 import com.sirafonso.e_library_users.core.domain.models.UserModelOut;
 import com.sirafonso.e_library_users.core.ports.out.UserPersistenceOutputPort;
@@ -47,7 +49,7 @@ public class UserPersistenceAdapter implements UserPersistenceOutputPort {
     public UserModelOut getSingleUser(UUID userId) {
         UserEntity foundUser = this.userRepository
                 .findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("There is no user with such id"));
+                .orElseThrow(() -> new ResourceNotFoundException(ExceptionMessage.ID_NOT_FOUND.getDescription()));
 
         return this.userMapper.userEntityToUserModelOut(foundUser);
     }
@@ -58,7 +60,7 @@ public class UserPersistenceAdapter implements UserPersistenceOutputPort {
                 .map(user -> {
                     user.setUsername(newUsername);
                     return this.userRepository.save(user);
-                }).orElseThrow(() -> new IllegalArgumentException("There is no user with such id"));
+                }).orElseThrow(() -> new ResourceNotFoundException(ExceptionMessage.ID_NOT_FOUND.getDescription()));
 
         return this.userMapper.userEntityToUserModelOut(updatedUser);
     }
